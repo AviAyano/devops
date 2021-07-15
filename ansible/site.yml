@@ -1,0 +1,31 @@
+- name: install apache2 on dev
+  hosts: dev
+  tasks:
+    - name: create apache2
+      apt:
+        name: apache2
+        state: present
+    - name: create /tmp/index.html file
+      copy:
+        dest: "/tmp/index.html"
+        content: Ansible delivered
+    - name: copy /tmp/index.html to /var/www/html/index.html
+      become: true
+      copy:
+        src: /tmp/index.html
+        dest: /var/www/html/index.html	
+    - name: start and enable apache2
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+- name: http checking
+  hosts: bastion
+  become: true
+  tasks:
+    - name: http checking
+      uri:
+        url: http://172.31.11.95
+        return_content: yes
+        register: this
+        failed_when: "'Ansible' not in this.content"

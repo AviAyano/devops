@@ -1,0 +1,8 @@
+---
+web_pkg: apache2
+
+mysql_pkg: mysql-server
+
+web_service: apache2
+
+mysql_service: mysql

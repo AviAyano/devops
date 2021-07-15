@@ -1,0 +1,40 @@
+---
+- name: install apache2 on test
+  hosts: dev
+  vars_files:
+    - vars/variables.yml
+  tasks:
+    - name: create apache2
+      apt:
+        update_cache: yes
+        name: 
+         - "{{ web_pkg }}"
+         - "{{ mysql_pkg }}"
+        state: present
+
+    - name: put welcome msg to/var/www/html/index.html
+      copy:
+        content: "Welcome to test server"
+        dest: /var/www/html/index.html
+
+    - name: start and enable apache2
+      service:
+        name: "{{ web_service }}"
+        state: started
+        enabled: yes
+
+    - name: start and enable mysql
+      service:
+        name: "{{ mysql_service }}"
+        state: started
+        enabled: yes
+
+- name: http checking
+  hosts: localhost
+  become: False
+  tasks:
+    - name: http check
+      uri:
+        url: http://172.31.8.29
+        return_content: yes
+        status_code: 200
