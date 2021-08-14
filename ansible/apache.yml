@@ -1,0 +1,9 @@
+---
+- name: Call ansible role 
+  hosts: all 
+  become: true
+  gather_facts: true
+  #roles:
+  # - sample_apache
+  tasks:
+    - import_role: name=sample_apache
