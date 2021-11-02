@@ -1,0 +1,40 @@
+>>> encrypted_message = "!XgXnXiXcXiXlXsX XnXoXhXtXyXpX XgXnXiXnXrXaXeXlX XmXaX XI"
+>>> encrypted_message[-1:0:2]
+''
+>>> encrypted_message[:-1:2]
+'!gnicils nohtyp gninrael ma '
+
+>>> encrypted_message[::2]
+'!gnicils nohtyp gninrael ma I'
+
+*****************
+>>> gg
+'ddar astronaut. pldase, stop drasing md!'
+>>> q
+4
+>>> sas=gg.replace(gg[0],'e')
+>>> sas
+'eear astronaut. please, stop erasing me!'
+>>> len(sas)
+40
+>>> zx=slice(1,39) חיתוך ללא התו הראשון
+
+>>> print(sas[zx])
+ear astronaut. please, stop erasing me
+
+>>> print(sigh+sas[zx])    SIGH='d' הערה
+dear astronaut. please, stop erasing me
+
+******************
+>>> user_input=input("Please enter a word: ")  קולט מהמשתמש קלט
+>>> correct_input=user_input.lower()     הופך את כל התווים לקטנים
+>>> print(correct_input)                
+b
+
+******************
+>>> user_input=input("Please enter a word: ")
+Please enter a word: GOOD
+>>>input_len = len(user_input)
+>>> print(' __ '*input_len)
+ __  __  __  __
+
